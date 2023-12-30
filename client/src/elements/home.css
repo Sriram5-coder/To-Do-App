@@ -1,0 +1,195 @@
+*{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    
+}
+
+/* CSS */
+#listlist {
+  padding: 0;
+  margin: 0;
+  
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+#listlist2 {
+    padding: 0;
+    margin-left: -12px;
+    overflow-x: hidden;
+    
+    /* background-color: aqua; */
+    height: 100vh;
+    width: calc(100% + 12px);
+    font-family: Arial, sans-serif;
+  }
+#menumenu{
+  margin: 0;
+  padding:0;
+  /* border-left: 1px solid rgba(0, 0, 8, 8);
+    border-top: 1px solid rgba(0, 0, 8, 8); */
+
+  
+}
+#menuheading{
+    width: 100vw;
+    height: 9vh;
+    padding-left: 6%;
+    padding-top: 5.9%;
+    font-size: 1.7vw;
+    
+
+    }
+    #menuheading1{
+        width: 100vw;
+        height: 9vh;
+        padding-left: 3%;
+        padding-top: 1%;
+        font-size: 1.7vw;
+        /* border-bottom: 1px solid rgba(0, 0, 8, 8); */
+        }
+
+
+    @media screen and (max-width: 768px) {
+        #menuheading {
+          font-size: 14px; /* Adjust font size for smaller screens */
+        }
+      }
+
+#todolist{
+    box-shadow: 0px 0px 9px -7px rgba(0, 0, 8, 8);
+}
+
+#projectslist{
+    height: 91vh;
+    width: 100vw;
+
+    padding: 10px;
+}
+#projectsublist{
+    width: 15%;
+    height: 50px;
+    border: 30px;
+    padding-top: 10px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 3px solid black;
+    text-align: left;
+}
+
+#projectsublist1{
+  width: 55%;
+  height: 50px;
+  border: 30px;
+  padding-top: 10px;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 3px solid black;
+  text-align: left;
+}
+#projectsublist:hover{
+    background-color: rgb(105, 184, 233);
+}
+
+#todobtn{
+    /* background-color: lightblue; */
+    color: blue;
+    opacity: 0.7;
+    /* font-weight: bold; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    height: 38px;
+    width: 93px;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+    padding: 8px;
+}
+#progressbtn{
+    /* background-color: lightpink; */
+    color: rgb(255, 39, 71);
+    opacity: 0.7;
+    /* font-weight: bold; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    height: 38px;
+    width: 150px;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+    padding: 8px;
+}
+#reviewbtn{
+    /* background-color: lightblue; */
+    color: blue;
+
+    opacity: 0.7;
+    /* font-weight: bold; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    height: 38px;
+    width: 130px;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+#completedbtn{
+    /* background-color: lightgreen; */
+    color: green;
+    opacity: 0.7;
+    /* font-weight: bold; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    height: 38px;
+    width: 130px;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+#taskcards{
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.col-md-3{
+    overflow-y: scroll;
+}
+
+
+/* CSS */
+
+/* Width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+    height: 2px; /* Adjust this value to decrease the height */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+#addingnew{
+    border: none;
+}
+  
