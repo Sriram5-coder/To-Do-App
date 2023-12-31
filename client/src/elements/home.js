@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react'
+import axios from 'axios';
 import './home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -6,10 +7,45 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Modal, Button, Form, Badge, Card } from 'react-bootstrap';
 
+
+
 function Home() {
-        const [yourArray, setYourArray] = useState([
-      
-    ]);
+
+const[projectname,setProjectname]=useState('')
+const[projectName,setProjectName]=useState('')
+    const addproject = () => {
+      let projectName = prompt('Enter the new project name:');
+      if (projectName) {
+        axios.post('http://localhost:8081/create', { projectName }) // Ensure it matches 'projectname' expected in the backend
+          .then((res) => {
+            console.log(res.data); // Log the response data
+            window.location.reload();
+          })
+          .catch((err) => {
+            console.log('Error:', err); // Log any error messages
+          });
+      }
+
+    };
+const [projects, setProjects] = useState([]);
+useEffect(() => {
+  axios.get('http://localhost:8081/projects')
+    .then(res => {
+      setProjects(res.data); // Update state with the fetched data
+    })
+    .catch(err => {
+      console.error('Error fetching data:', err);
+    });
+}, []);
+
+  useEffect(()=>{
+    axios.get('http://localhost:8081/')
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+},[])
+
+
+    const [yourArray, setYourArray] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [tasks, setTasks] = useState([]);
     const [taskData, setTaskData] = useState({
@@ -52,13 +88,8 @@ function Home() {
       setTaskData({ name: '', startDate: '', endDate: '', status: 'To Do' });
       setShowModal(false);
     };
-
-    const addproject = () => {
-      const newProjectName = prompt('Enter the new project name:');
-      if (newProjectName) {
-        setYourArray([...yourArray, newProjectName]);
-      }
-    };
+    
+    
   
     const handleEdit = (index) => {
       setTaskData(tasks[index]);
@@ -105,7 +136,6 @@ function Home() {
     <>
          <div className="container-fluid">
       <div className="row">
-        {/* Sidebar - Only visible on larger screens */}
         <div id='menumenu' className=" col-md-2 d-none d-md-block bg-light min-vh-100 shadow">
           <div id='listlist'  className="mx-0">
                 <div id='menuheading'>
@@ -115,26 +145,28 @@ function Home() {
                 </div>
           </div>
           <div id='projectslist' >
-          {yourArray.map((item, index) => (
-  <div key={index} id='projectsublist' onClick={() => handleProjectClick(item)}>
-    {item}
-    <button
-      onClick={() => deleteProject(item)}
+          
+
+        {projects.map(project => (
+          <div id='projectsublist' onClick={() => handleProjectClick(project)}>
+          <div key={project.id} className='bg-transparent'>{project.Project_Name}</div>
+        
+      <button
+      onClick={() => deleteProject(project)}
       className='bg-transparent'
-      style={{ float: 'right', marginRight: '20px', border: 'none' }}
+      style={{ float: 'right', marginRight: '20px',marginTop:'-20px', border: 'none' }}
     >
       <i className="fa fa-trash" aria-hidden="true"></i>
     </button>
   </div>
-))}
 
+  ))}
         <button style={{color:'blue', fontSize:'13px', border:'0'}} onClick={addproject}>&nbsp;&nbsp;&nbsp;+&nbsp;Add New Project</button>
           </div>
         </div>
-        {/* Main content */}
+
         <div className="col-md-10 col-sm-12  min-vh-100"  id='todolist'>
-        {/* style={{borderLeft:'2px solid black'}} */}
-          {/* Hamburger icon to toggle the sidebar on smaller screens */}
+        
           <button
               className="d-md-none btn p-0 border-0" // Custom styles to remove background and border
               type="button"
@@ -144,10 +176,8 @@ function Home() {
               style={{ padding: '0px', marginTop: '10px',backgroundColor:'white',width:'30px', height:'30px' }} // Additional inline style
             >
               {/* Font Awesome icon */}
-              <i className="fas fa-bars text-dark"></i> {/* This icon represents the menu */}
-            </button>
+              <i className="fas fa-bars text-dark"></i>  </button>
 
-          {/* Collapsible sidebar for smaller screens */}
           <div
             className="offcanvas offcanvas-start d-md-none"
             tabIndex="-1"
@@ -164,7 +194,7 @@ function Home() {
               ></button>
             </div>
             <div className="offcanvas-body">
-              {/* Your sidebar content goes here */}
+
               
 
 
