@@ -206,18 +206,20 @@ useEffect(() => {
                 </div>
           </div>
           <div id='projectslist' >
-          {yourArray.map((item, index) => (
-  <div key={index} id='projectsublist1' onClick={() => handleProjectClick(item)}>
-    {item}
-    <button
-      onClick={() => deleteProject(item)}
+          {projects.map(project => (
+          <div id='projectsublist' onClick={() => handleProjectClick(project)}>
+          <div key={project.id} className='bg-transparent'>{project.Project_Name}</div>
+        
+      <button
+      onClick={() => deleteProject(project)}
       className='bg-transparent'
-      style={{ float: 'right', marginRight: '20px', border: 'none' }}
+      style={{ float: 'right', marginRight: '20px',marginTop:'-20px', border: 'none' }}
     >
       <i className="fa fa-trash" aria-hidden="true"></i>
     </button>
   </div>
-))}
+
+  ))}
 
         <button style={{color:'blue', fontSize:'13px', border:'0'}} onClick={addproject}>&nbsp;&nbsp;&nbsp;+&nbsp;Add New Project</button>
           </div>
